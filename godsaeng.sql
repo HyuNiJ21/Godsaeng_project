@@ -70,7 +70,8 @@ CREATE TABLE StudyLogs (
 CREATE TABLE Todos (
     id INT AUTO_INCREMENT PRIMARY KEY COMMENT '할 일 고유 식별자',
     userId INT NOT NULL COMMENT 'Users 테이블의 id 참조',
-    content VARCHAR(255) NOT NULL COMMENT '할 일 내용',
+    title VARCHAR(255) NOT NULL COMMENT '할 일 제목',
+    memo TEXT NULL DEFAULT NULL COMMENT '할 일 메모',
     isCompleted BOOLEAN DEFAULT FALSE COMMENT '완료 여부',
     dueDate DATE COMMENT '마감 날짜',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
