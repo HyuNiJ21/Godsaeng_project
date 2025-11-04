@@ -48,10 +48,12 @@ CREATE TABLE Users (
 
 -- 2. Characters (캐릭터 테이블)
 CREATE TABLE Characters (
-    id INT AUTO_INCREMENT PRIMARY KEY COMMENT '캐릭터 고유 식별자',
-    userId INT NOT NULL UNIQUE COMMENT 'Users 테이블의 id 참조 (1:1)',
-    level INT DEFAULT 1 COMMENT '캐릭터의 현재 레벨',
-    exp INT DEFAULT 0 COMMENT '캐릭터의 현재 경험치',
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL UNIQUE COMMENT 'Users(id) 참조 (1:1)',
+    characterName VARCHAR(50) DEFAULT '캐릭터' COMMENT '캐릭터 닉네임 (변경 가능)',
+    characterImage VARCHAR(100) DEFAULT 'snoopy1' COMMENT '선택한 캐릭터 이미지 ID',
+    level INT DEFAULT 1 COMMENT '캐릭터 레벨',
+    exp INT DEFAULT 0 COMMENT '캐릭터 경험치',
     FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE
 );
 
