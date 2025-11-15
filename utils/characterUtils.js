@@ -19,14 +19,7 @@ const getExpRequired = (level) => {
  * @returns {object} - 업데이트된 레벨, 경험치 및 레벨업 여부
  */
 const updateExpAndCheckLevelUp = async (userId, expAmount, connection) => {
-    // --- 🔥 수정된 부분 (connection 재사용) ---
-    // 이 함수는 이미 트랜잭션이 시작된 study.js에서 호출되므로
-    // 새로운 connection을 만들지 않고, 전달받은 connection을 사용합니다.
-    
-    // let connection; // 삭제
     try {
-        // connection = await pool.getConnection(); // 삭제
-        // await connection.beginTransaction(); // 삭제 (이미 상위에서 시작됨)
 
         // 1. 현재 캐릭터 상태 조회 (level, exp)
         const [current] = await connection.execute(
@@ -57,7 +50,6 @@ const updateExpAndCheckLevelUp = async (userId, expAmount, connection) => {
         const sql = 'UPDATE Characters SET level = ?, exp = ? WHERE userId = ?';
         await connection.execute(sql, [level, newExp, userId]);
 
-        // await connection.commit(); // 삭제 (상위 로직에서 커밋)
         
         return {
             oldLevel: originalLevel,
@@ -67,14 +59,9 @@ const updateExpAndCheckLevelUp = async (userId, expAmount, connection) => {
         };
 
     } catch (error) {
-        // if (connection) { await connection.rollback(); } // 삭제 (상위 로직에서 롤백)
         console.error('경험치 업데이트 트랜잭션 오류:', error);
         throw error; // 오류를 상위로 전파
     } 
-    // finally {
-    //    if (connection) { connection.release(); } // 삭제 (상위 로직에서 릴리즈)
-    // }
-    // ---------------------------------------
 };
 
 module.exports = { updateExpAndCheckLevelUp, getExpRequired } // getExpRequired도 export
