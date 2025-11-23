@@ -3,8 +3,10 @@
  */
 const express = require('express');
 const cors = require('cors');
+const path = require("path");
 require('dotenv').config();
-const authRoutes = require('./routes/auth'); // 인증 라우터 가져오기
+
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const todosRoutes = require('./routes/todos');
 const diaryRoutes = require('./routes/diary');
@@ -14,14 +16,18 @@ const faqRouter = require('./routes/faq');
 const inquiryRouter = require('./routes/inquiry');
 const rankingRoutes = require('./routes/ranking');
 const noticeRoutes = require('./routes/notice');
+const adminRoutes = require("./routes/admin")
+const characterRoutes = require("./routes/character");
+const adminCharacterRoutes = require("./routes/adminCharacter");
+const adminGameRoutes = require("./routes/adminGame");
 
-// Express 앱 생성 및 기본 설정
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // API 라우터 연결
-// '/api/auth'로 시작하는 모든 요청은 authRoutes가 처리하도록 설정
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/todos', todosRoutes);
@@ -32,6 +38,10 @@ app.use('/api/faq', faqRouter);
 app.use('/api/inquiry', inquiryRouter);
 app.use('/api/ranking', rankingRoutes);
 app.use('/api/notice', noticeRoutes);
+app.use('/api/admin', adminRoutes);
+app.use("/api/characters", characterRoutes);
+app.use("/api/admin/characters", adminCharacterRoutes);
+app.use("/api/admin/game", adminGameRoutes);
 
 // 서버 실행
 const PORT = 3001;
