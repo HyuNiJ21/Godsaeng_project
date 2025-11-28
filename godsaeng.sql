@@ -2,20 +2,20 @@
 -- 기존 데이터베이스 초기화
 -- =================================================================================
 
-SET FOREIGN_KEY_CHECKS = 0;
+-- SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS Words;
-DROP TABLE IF EXISTS WordSets;
-DROP TABLE IF EXISTS Inquiries;
-DROP TABLE IF EXISTS FAQs;
-DROP TABLE IF EXISTS Announcements;
-DROP TABLE IF EXISTS Diaries;
-DROP TABLE IF EXISTS Todos;
-DROP TABLE IF EXISTS StudyLogs;
-DROP TABLE IF EXISTS Characters;
-DROP TABLE IF EXISTS Users;
+-- DROP TABLE IF EXISTS Words;
+-- DROP TABLE IF EXISTS WordSets;
+-- DROP TABLE IF EXISTS Inquiries;
+-- DROP TABLE IF EXISTS FAQs;
+-- DROP TABLE IF EXISTS Announcements;
+-- DROP TABLE IF EXISTS Diaries;
+-- DROP TABLE IF EXISTS Todos;
+-- DROP TABLE IF EXISTS StudyLogs;
+-- DROP TABLE IF EXISTS Characters;
+-- DROP TABLE IF EXISTS Users;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;users
 
 -- 데이터베이스 생성 / 선택
 CREATE DATABASE IF NOT EXISTS godsaeng_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
