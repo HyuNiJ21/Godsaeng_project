@@ -1,8 +1,9 @@
 /**
  * 갓생 제조기 - 데이터베이스 연결 설정
  */
-const mysql = require('mysql2/promise');
 require('dotenv').config();
+const mysql = require('mysql2/promise');
+
 
 // DB 에서 받은 접속 정보를 바탕으로 설정 객체를 만듬
 const dbConfig = {
